@@ -14,7 +14,10 @@
 
 <body>
 <nav class="mx-auto flex bg-white justify-evenly items-center h-20 sticky top-0 p-5 z-10 drop-shadow-md">
-    <a href="#" class="uppercase" style="font-family: Montserrat; font-weight: 500;">Cardboard crew</a>
+    <a href="/" class="uppercase" style="font-family: Montserrat; font-weight: 500;">Cardboard crew</a>
+
+
+
     <div class="flex space-x-6">
         <select name="categories" id="categories">
             <option value="news">news</option>
@@ -24,20 +27,20 @@
             <option value="euro">euro</option>
             <option value="americatrash">americatrash</option>
         </select>
-        <img src="images\Search_Icon.svg" alt="Search_Icon" width="15" height="15" />
+        <img src="/images/Search_Icon.svg" alt="Search_Icon" width="15" height="15" />
     </div>
 </nav>
 
-<x-banner/>
+{{ $banner }}
 
 <main class="bg-gray-100">
     <div class="max-w-4xl bg-white drop-shadow-sm mx-auto px-5 py-10">
-        @foreach($posts as $post)
-            <x-post :post="$post"/>
-        @endforeach
+
+        {{ $slot }}
 
     </div>
 </main>
+
 <footer>
 
 </footer>

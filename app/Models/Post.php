@@ -17,11 +17,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function comment() {
+    public function comments() {
         return $this->hasMany(Comment::class);
     }
 
-    public function tag() {
-        return $this->hasMany(Tag::class);
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
     }
 }

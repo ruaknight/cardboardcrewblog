@@ -35,7 +35,6 @@ class DatabaseSeeder extends Seeder
 
         Tag::factory(10)->create();
 
-        PostTag::factory(20)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('excerpt');
             $table->text('body');
+            $table->string('main_image');
             $table->foreignId('user_id');
             $table->foreignId('category_id');
         });

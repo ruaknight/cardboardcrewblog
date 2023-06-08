@@ -1,1 +1,2 @@
-{{ dd($posts) }}
+<x-layout :posts="$posts">
+</x-layout>

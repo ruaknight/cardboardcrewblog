@@ -21,6 +21,7 @@ class PostFactory extends Factory
         return [
             'title' => fake()->sentence,
             'excerpt' => fake()->sentence,
+            'main_image' => fake()->imageUrl(1280,960),
             'body' => fake()->paragraph,
             'user_id' => fake()->biasedNumberBetween(1, 10),
             'category_id' => fake()->biasedNumberBetween(1, 2)
