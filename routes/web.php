@@ -4,6 +4,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +37,11 @@ Route::get('/authors/{author:name}', function (User $author) {
 });
 
 Route::get('/post/{post:title}', function (Post $post) {
-    return view('post', ['comments' => $post->comments, 'post' => $post]);
+    $post->with('comments.user')->get();
+
+    return view('post', ['post' => $post]);
+});
+
+Route::get('/comment/{comment:id}', function (Comment $comment) {
+    return view('test', ['comment' => Comment::with('user')->first()]);
 });

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<nav class="mx-auto flex bg-white justify-evenly items-center h-20 sticky top-0 p-5 z-10 drop-shadow-md">
+<nav class="mx-auto flex align-middle items-center bg-white justify-evenly h-20 sticky top-0 p-5 z-10 drop-shadow-md">
     <a href="/" class="uppercase" style="font-family: Montserrat; font-weight: 500;">Cardboard crew</a>
 
 
@@ -27,7 +27,12 @@
             <option value="euro">euro</option>
             <option value="americatrash">americatrash</option>
         </select>
-        <img src="/images/Search_Icon.svg" alt="Search_Icon" width="15" height="15" />
+        <div class="flex items-center align-middle">
+            <form method="GET" action="#" class="bg-gray-100 py-1.5 px-3 rounded-full flex items-center align-middle">
+                <img src="/images/Search_Icon.svg" alt="Search_Icon" width="20" height="20" />
+                <input type="text" name="search" placeholder="Find something" class="bg-gray-100 outline-none pl-2">
+            </form>
+        </div>
     </div>
 </nav>
 

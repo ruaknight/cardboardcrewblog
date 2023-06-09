@@ -3,7 +3,6 @@
     <article
         class="mx-auto p-5">
 
-
         <h1 style="font-family: Montserrat,sans-serif; font-weight: 500; font-size: xx-large; text-align: center">
             {{ $post->title }}
         </h1>
@@ -31,7 +30,7 @@
         <hr>
 
         <h1 style="font-family: Montserrat; font-weight: 300; font-size: x-large;" class="py-5 px-14">Comments:</h1>
-        @foreach($comments as $comment)
+        @foreach($post->comments as $comment)
             <x-comment :comment="$comment"/>
         @endforeach
 

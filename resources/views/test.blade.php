@@ -1,1 +1,1 @@
-{{ dd($comments) }}
+{{ dd($comment) }}
