@@ -8,7 +8,7 @@
     </a>
 
     <img src="{{ $post->main_image }}" alt="article image"
-         class="h-64 w-[896px] object-cover my-5 rounded-xl border border-gray-300"/>
+         class="h-64 max-w object-cover my-5 rounded-xl border border-gray-300"/>
 
     <div class="flex align-middle text-blue-400 fill-blue-400 space-x-1">
         <img src="/images/user.svg" width="16" height="16" alt="">

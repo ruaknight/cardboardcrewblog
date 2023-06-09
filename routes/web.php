@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('posts'
-        , ['posts' => Post::with('author', 'category', 'comments', 'tags')->get()]
+        , ['posts' => Post::all()]
     );
 });
 
@@ -36,5 +36,5 @@ Route::get('/authors/{author:name}', function (User $author) {
 });
 
 Route::get('/post/{post:title}', function (Post $post) {
-    return view('post', ['post' => $post] );
+    return view('post', ['comments' => $post->comments, 'post' => $post]);
 });

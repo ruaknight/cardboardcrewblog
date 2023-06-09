@@ -1,2 +1,1 @@
-<x-layout :posts="$posts">
-</x-layout>
+{{ dd($comments) }}

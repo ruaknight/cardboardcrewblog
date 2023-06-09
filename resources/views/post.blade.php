@@ -1,7 +1,8 @@
 <x-layout :post="$post">
     <x-slot name="banner"></x-slot>
     <article
-        class="mx-auto">
+        class="mx-auto p-5">
+
 
         <h1 style="font-family: Montserrat,sans-serif; font-weight: 500; font-size: xx-large; text-align: center">
             {{ $post->title }}
@@ -23,9 +24,16 @@
             @endforeach
         </div>
 
-        <p class="mt-5">
+        <p class="my-5">
             {{ $post->body }}
         </p>
+
+        <hr>
+
+        <h1 style="font-family: Montserrat; font-weight: 300; font-size: x-large;" class="py-5 px-14">Comments:</h1>
+        @foreach($comments as $comment)
+            <x-comment :comment="$comment"/>
+        @endforeach
 
     </article>
 </x-layout>
