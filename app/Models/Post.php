@@ -11,6 +11,13 @@ class Post extends Model
 
     protected $with = ['category', 'author', 'tags', 'comments'];
 
+    public function scopeFilter($query) {
+        if (request('search')) {
+            $query->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('body', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }

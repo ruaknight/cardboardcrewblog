@@ -24,7 +24,7 @@
     </div>
 
     <p class="mt-5">
-        {{ $post->body }}
+        {!! $post->body !!}
     </p>
 
     <footer class="flex justify-between mt-5 text-blue-400">

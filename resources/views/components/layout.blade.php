@@ -30,7 +30,11 @@
         <div class="flex items-center align-middle">
             <form method="GET" action="#" class="bg-gray-100 py-1.5 px-3 rounded-full flex items-center align-middle">
                 <img src="/images/Search_Icon.svg" alt="Search_Icon" width="20" height="20" />
-                <input type="text" name="search" placeholder="Find something" class="bg-gray-100 outline-none pl-2">
+                <input type="text"
+                       name="search"
+                       placeholder="Find something"
+                       class="bg-gray-100 outline-none pl-2"
+                       value="{{ request('search') }}">
             </form>
         </div>
     </div>
