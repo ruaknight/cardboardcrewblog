@@ -12,4 +12,6 @@
             <x-post-card :post="$post"/>
         </main>
     @endforeach
+
+    {{ $posts->links() }}
 </x-layout>
