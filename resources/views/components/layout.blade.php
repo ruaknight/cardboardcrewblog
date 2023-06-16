@@ -18,15 +18,24 @@
 
 
 
-    <div class="flex space-x-6">
+    <div class="flex space-x-6 align-middle items-center">
         <select name="categories" id="categories">
             <option value="news">news</option>
             <option value="reviews">reviews</option>
         </select>
-        <select name="classification" id="classify">
-            <option value="euro">euro</option>
-            <option value="americatrash">americatrash</option>
-        </select>
+
+        @auth
+            <a href="/">{{ auth()->user()->name }}</a>
+            <form method="POST" action="/logout">
+                @csrf
+
+                <button type="submit">log out</button>
+            </form>
+        @else
+            <a href="/register">register</a>
+            <a href="/login">log in</a>
+        @endauth
+
         <div class="flex items-center align-middle">
             <form method="GET" action="#" class="bg-gray-100 py-1.5 px-3 rounded-full flex items-center align-middle">
                 <img src="/images/Search_Icon.svg" alt="Search_Icon" width="20" height="20" />
