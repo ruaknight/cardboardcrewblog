@@ -29,10 +29,15 @@
 
         <hr>
 
-        <h1 style="font-family: Montserrat; font-weight: 300; font-size: x-large;" class="pt-5 px-5" id="comment">Comments:</h1>
+        <h1 style="font-family: Montserrat; font-weight: 300; font-size: x-large;" class="pt-5 px-5" id="comment">
+            Comments:</h1>
         @foreach($post->comments as $comment)
             <x-comment :comment="$comment"/>
         @endforeach
+
+        @auth()
+            <x-post-comment :post="$post"/>
+        @endauth
 
     </article>
 </x-layout>

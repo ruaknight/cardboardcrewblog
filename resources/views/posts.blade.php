@@ -12,4 +12,9 @@
             <x-post-card :post="$post"/>
         </main>
     @endforeach
+
+
+
+
 </x-layout>
+

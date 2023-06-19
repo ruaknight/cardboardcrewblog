@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
@@ -37,9 +38,11 @@ Route::get('/authors/{author:name}', function (User $author) {
 
 Route::get('/post/{post:title}', [PostController::class, 'show']);
 
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
-Route::get('login', [SessionController::class, 'create'])->middleware('guest');
-Route::post('sessions', [SessionController::class, 'login'])->middleware('guest');
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
+Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
+Route::post('/sessions', [SessionController::class, 'login'])->middleware('guest');
+
+Route::post('/comment', [CommentController::class, 'store']);
