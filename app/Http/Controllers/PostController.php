@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -18,6 +19,30 @@ class PostController extends Controller
     {
         $post->with('comments.user')->get();
         return view('post', ['post' => $post]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store()
+    {
+//        dd(\request());
+
+        $attributes = \request()->validate([
+            'title' => ['required', 'max:255'],
+            'excerpt' => ['required'],
+            'body' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+
+        $attributes['main_image'] = fake()->imageUrl(1280, 720);
+        $attributes['user_id'] = auth()->id();
+
+        Post::create($attributes);
+
+        return redirect('/')->with('success', 'post successfully');
     }
 
 //    public function getPosts() {

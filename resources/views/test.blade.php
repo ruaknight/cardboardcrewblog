@@ -1,1 +1,1 @@
-{{ dd($comment) }}
+<p>hello</p>

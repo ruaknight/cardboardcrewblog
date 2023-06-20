@@ -11,6 +11,8 @@ class Post extends Model
 
     protected $with = ['category', 'author', 'tags', 'comments'];
 
+    protected $guarded = [];
+
     public function scopeFilter($query) {
         if (request('search')) {
             $query->where('title', 'like', '%' . request('search') . '%')

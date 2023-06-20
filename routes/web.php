@@ -36,7 +36,10 @@ Route::get('/authors/{author:name}', function (User $author) {
     return view('posts', ['posts' => $author->posts]);
 });
 
-Route::get('/post/{post:title}', [PostController::class, 'show']);
+Route::get('/post/{post:id}', [PostController::class, 'show']);
+
+Route::get('admin/post/create', [PostController::class, 'create'])->middleware('admin');
+Route::post('admin/post/create', [PostController::class, 'store'])->middleware('admin');
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
@@ -45,4 +48,4 @@ Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth'
 Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('/sessions', [SessionController::class, 'login'])->middleware('guest');
 
-Route::post('/comment', [CommentController::class, 'store']);
+Route::post('/comment', [CommentController::class, 'store'])->middleware('auth');

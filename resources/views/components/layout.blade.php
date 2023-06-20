@@ -25,10 +25,11 @@
         </select>
 
         @auth
-            <a href="/">{{ auth()->user()->name }}</a>
+            @if(auth()->user()->role === 'author' || auth()->user()->role === 'admin')
+                <a href="/admin/post/create">Create a post</a>
+            @endif
             <form method="POST" action="/logout">
                 @csrf
-
                 <button type="submit">log out</button>
             </form>
         @else
@@ -46,6 +47,10 @@
                        value="{{ request('search') }}">
             </form>
         </div>
+        @auth
+            <img src="https://i.pravatar.cc/150?img={{ auth()->id() }}"
+                 class="self-center h-10 w-10 rounded-full object-cover">
+        @endauth
     </div>
 </nav>
 
