@@ -10,9 +10,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts'
-            , ['posts' => Post::latest()->get()]
-        );
+        return view('posts', [
+            'posts' => Post::latest()->filter(\request(['search', 'category', 'author']))->paginate(3)]);
     }
 
     public function show(Post $post)
@@ -28,8 +27,6 @@ class PostController extends Controller
 
     public function store()
     {
-//        dd(\request());
-
         $attributes = \request()->validate([
             'title' => ['required', 'max:255'],
             'excerpt' => ['required'],
@@ -54,4 +51,5 @@ class PostController extends Controller
 //        }
 //        return $posts->get();
 //    }
+
 }

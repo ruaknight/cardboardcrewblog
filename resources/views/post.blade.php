@@ -12,11 +12,11 @@
 
         <div class="flex align-middle text-blue-400 fill-blue-400 space-x-1">
             <img src="/images/user.svg" width="16" height="16" alt="">
-            <a href="/authors/{{$post->author->name}}">{{ $post->author->name }}</a>
+            <a href="../?author={{$post->author->id}}">{{ $post->author->name }}</a>
             <img src="/images/clock.svg" width="16" height="16" alt="">
             <p>{{ $post->created_at->diffForHumans() }}</p>
             <img src="/images/tag.svg" width="16" height="16" alt="">
-            <a href="/categories/{{$post->category->name}}">
+            <a href="../?category={{$post->category->name}}">
                 {{ $post->category->name }}</a>
             @foreach($post->tags->pluck('name') as $tag)
                 <a href="/tags/{{ $tag }}">{{ $tag }}</a>

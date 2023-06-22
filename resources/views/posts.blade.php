@@ -12,4 +12,7 @@
             <x-post-card :post="$post"/>
         </main>
     @endforeach
+    @if($posts->count())
+        {{ $posts->links() }}
+    @endif
 </x-layout>
