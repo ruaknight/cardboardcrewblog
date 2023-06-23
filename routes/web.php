@@ -24,10 +24,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index']);
 
-//Route::get('/categories/{category:name}', function (Category $category) {
-//    return view('posts', ['posts' => $category->posts]);
-//});
-
 Route::get('/post/{post:id}', [PostController::class, 'show']);
 
 Route::get('admin/post/create', [PostController::class, 'create'])->middleware('admin');
@@ -41,3 +37,34 @@ Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('/sessions', [SessionController::class, 'login'])->middleware('guest');
 
 Route::post('/comment', [CommentController::class, 'store'])->middleware('auth');
+
+
+//Route::get('/categories/{category:name}', function (Category $category) {
+//    return view('posts', ['posts' => $category->posts]);
+//});
+
+
+Route::post('newsletter', function () {
+    request()->validate(['email' => 'required|email']);
+
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us21'
+    ]);
+
+    try {
+        $response = $mailchimp->lists->addListMember("74c20aff63", [
+            'email_address' => request('email'),
+            'status' => 'subscribed',
+        ]);
+    } catch (Exception $e) {
+        \Illuminate\Validation\ValidationException::withMessages(
+            ['email', 'cant subscribe']
+        );
+    }
+
+    return redirect('/')
+        ->with('success', 'subscribed!');
+});

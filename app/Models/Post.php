@@ -9,8 +9,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $with = ['category', 'author', 'tags', 'comments'];
-
     protected $guarded = [];
 
     public function scopeFilter($query, array $filters)

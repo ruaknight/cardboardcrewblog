@@ -30,6 +30,6 @@
 
     <footer class="flex justify-between mt-5 text-blue-400">
         <a href="/post/{{ $post->id }}">Continue Reading</a>
-        <a href="/post/{{ $post->id }}/#comment">{{ $post->comments->count() }} comments</a>
+        <a href="/post/{{ $post->id }}/#comment">{{ $post->comments_count }} comments</a>
     </footer>
 </article>

@@ -1,8 +1,6 @@
 <x-layout>
     <section class="px-" py-8>
         <x-slot name="banner"></x-slot>
-
-
         <main class="max-w mx-auto">
             <form method="POST" action="/register">
                 @csrf

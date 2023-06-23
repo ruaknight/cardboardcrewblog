@@ -11,12 +11,19 @@ class PostController extends Controller
     public function index()
     {
         return view('posts', [
-            'posts' => Post::latest()->filter(\request(['search', 'category', 'author']))->paginate(3)]);
+            'posts' => Post::latest()->filter(\request(['search', 'category', 'author']))
+                ->withCount('comments')
+                ->with('category')
+                ->with('tags')
+                ->with('author')
+                ->paginate(10)]);
     }
 
     public function show(Post $post)
     {
-        $post->with('comments.user')->get();
+        $post
+            ->with('comments.user')
+            ->get();
         return view('post', ['post' => $post]);
     }
 
