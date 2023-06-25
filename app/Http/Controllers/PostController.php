@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -16,7 +17,8 @@ class PostController extends Controller
                 ->with('category')
                 ->with('tags')
                 ->with('author')
-                ->paginate(10)]);
+                ->paginate(10)
+            ]);
     }
 
     public function show(Post $post)
