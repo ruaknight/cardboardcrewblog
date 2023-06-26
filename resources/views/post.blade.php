@@ -1,4 +1,4 @@
-<x-layout :post="$post">
+<x-layout :post="$post" :hotBgs="$hotBgs['item']">
     <x-slot name="banner"></x-slot>
     <article
         class="mx-auto p-5">
@@ -18,9 +18,9 @@
             <img src="/images/tag.svg" width="16" height="16" alt="">
             <a href="../?category={{$post->category->name}}">
                 {{ $post->category->name }}</a>
-            @foreach($post->tags->pluck('name') as $tag)
-                <a href="/tags/{{ $tag }}">{{ $tag }}</a>
-            @endforeach
+{{--            @foreach($post->tags->pluck('name') as $tag)--}}
+{{--                <a href="/tags/{{ $tag }}">{{ $tag }}</a>--}}
+{{--            @endforeach--}}
         </div>
 
         <p class="my-5">

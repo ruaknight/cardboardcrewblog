@@ -4,11 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
-use App\Models\Comment;
+use App\Services\Boardgamegeek;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,18 +65,11 @@ Route::post('newsletter', function () {
         ->with('success', 'subscribed!');
 });
 
-Route::get('/test', function() {
-//    dd(Post::first());
-    $api_key = config('services.weather.key');
-    $test = \Illuminate\Support\Facades\Http::post('https://api.openweathermap.org/data/2.5/weather?id='. $api_key .'&mode=xml');
-
-    $test = \Illuminate\Support\Facades\Http::post('https://boardgamegeek.com/xmlapi/collection/ruaknight');
-
-    $xml = simplexml_load_string($test);
-    $json = json_encode($xml, JSON_FORCE_OBJECT);
-    $array = json_decode($json);
-
-    dd($array);
-
+Route::get('/test/{id:id}', function(String $id, Boardgamegeek $bg) {
+    return $bg->getInfo($bg->gameUrlBuilder($id));
 //    dd($array->city->{'@attributes'}->id);
 } );
+
+Route::get('bggHot', function(Boardgamegeek $bg) {
+    return $bg->getHotItems();
+});

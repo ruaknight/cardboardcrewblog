@@ -37,5 +37,9 @@ return [
 
     'weather' => [
         'key' => env('OPEN_WEATHER_KEY')
+    ],
+
+    'bgg' => [
+        'url' => 'https://boardgamegeek.com/xmlapi2/'
     ]
 ];

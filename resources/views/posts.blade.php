@@ -1,4 +1,4 @@
-<x-layout :posts="$posts">
+<x-layout :posts="$posts" :hotBgs="$hotBgs['item']">
     <x-slot name="banner">
         <x-banner/>
     </x-slot>
