@@ -71,7 +71,8 @@ Route::post('newsletter', function () {
 
 Route::get('/test', function() {
 //    dd(Post::first());
-//    $test = \Illuminate\Support\Facades\Http::post('https://api.openweathermap.org/data/2.5/weather?id=1581130&appid=8b788ee52f3ec80dccc09620b9881e20&mode=xml');
+    $api_key = config('services.weather.key');
+    $test = \Illuminate\Support\Facades\Http::post('https://api.openweathermap.org/data/2.5/weather?id='. $api_key .'&mode=xml');
 
     $test = \Illuminate\Support\Facades\Http::post('https://boardgamegeek.com/xmlapi/collection/ruaknight');
 

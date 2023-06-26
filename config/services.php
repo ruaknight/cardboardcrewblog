@@ -33,5 +33,9 @@ return [
 
     'mailchimp' => [
         'key' => env('MAILCHIMP_KEY')
+    ],
+
+    'weather' => [
+        'key' => env('OPEN_WEATHER_KEY')
     ]
 ];
