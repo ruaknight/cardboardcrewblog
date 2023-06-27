@@ -14,10 +14,10 @@ class Boardgamegeek {
 
     public function gameUrlBuilder(String $game): string
     {
-        return config('services.bgg.url').'thing?id='.$game;
+        return config('services.bgg.apiUrl').'thing?id='.$game;
     }
 
     public function getHotItems() {
-        return $this->getInfo(config('services.bgg.url') . 'hot?type=boardgame');
+        return $this->getInfo(config('services.bgg.apiUrl') . 'hot?type=boardgame');
     }
 }

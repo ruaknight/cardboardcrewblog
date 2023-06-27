@@ -40,6 +40,7 @@ return [
     ],
 
     'bgg' => [
-        'url' => 'https://boardgamegeek.com/xmlapi2/'
+        'apiUrl' => 'https://boardgamegeek.com/xmlapi2/',
+        'redirectUrl' => 'https://boardgamegeek.com/boardgame/'
     ]
 ];

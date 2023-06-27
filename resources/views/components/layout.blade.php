@@ -19,6 +19,7 @@
 </head>
 
 <body>
+{{--{{ dd($hotBgs) }}--}}
 <nav class="mx-auto flex align-middle items-center bg-white justify-evenly h-20 sticky top-0 p-5 z-10 drop-shadow-md">
     <a href="/" class="uppercase" style="font-family: Montserrat; font-weight: 500;">Cardboard crew</a>
 
