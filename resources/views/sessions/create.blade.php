@@ -1,8 +1,5 @@
-<x-layout>
+<x-layout-auth>
     <section class="px-" py-8>
-        <x-slot name="banner"></x-slot>
-
-
         <main class="max-w mx-auto">
             <form method="POST" action="/sessions">
                 @csrf
@@ -18,4 +15,4 @@
             </form>
         </main>
     </section>
-</x-layout>
+</x-layout-auth>

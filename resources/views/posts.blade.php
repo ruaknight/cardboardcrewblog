@@ -1,6 +1,10 @@
-<x-layout :posts="$posts" :hotBgs="$hotBgs['item']">
+<x-layout :posts="$posts">
     <x-slot name="banner">
         <x-banner/>
+    </x-slot>
+
+    <x-slot name="boardgamehot">
+        <x-boardgamehot :hotBgs="$hotBgs"/>
     </x-slot>
 
     @if(request('search') ?? false)

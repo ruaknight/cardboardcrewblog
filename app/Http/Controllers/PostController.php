@@ -19,7 +19,7 @@ class PostController extends Controller
                 ->with('tags')
                 ->with('author')
                 ->paginate(10),
-            'hotBgs' => $boardgamegeek->getHotItems()
+            'hotBgs' => $boardgamegeek->getHotItems()['item']
             ]);
     }
 
@@ -30,7 +30,7 @@ class PostController extends Controller
             ->get();
         return view('post', [
             'post' => $post,
-            'hotBgs' => $boardgamegeek->getHotItems()
+            'hotBgs' => $boardgamegeek->getHotItems()['item']
         ]);
     }
 

@@ -85,15 +85,10 @@
     </div>
 </nav>
 
-{{ $banner }}
-
 <main class="bg-gray-100">
     <div class="max-w-5xl drop-shadow-sm mx-auto px-5 py-10 grid grid-cols-7 gap-2">
-        <div class="col-start-1 col-end-6 bg-white rounded-xl px-5 pt-5">
+        <div class="col-start-1 col-end-8 bg-white rounded-xl px-5 pt-5">
             {{ $slot }}
-        </div>
-        <div class="col-start-6 col-end-8 bg-white rounded-xl">
-            {{ $boardgamehot }}
         </div>
     </div>
 </main>

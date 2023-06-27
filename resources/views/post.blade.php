@@ -1,5 +1,10 @@
-<x-layout :post="$post" :hotBgs="$hotBgs['item']">
+<x-layout :post="$post">
     <x-slot name="banner"></x-slot>
+
+    <x-slot name="boardgamehot">
+        <x-boardgamehot :hotBgs="$hotBgs"/>
+    </x-slot>
+
     <article
         class="mx-auto p-5">
 

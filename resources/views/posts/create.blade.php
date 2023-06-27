@@ -1,9 +1,4 @@
-<x-layout>
-
-    <x-slot name="banner">
-        <x-banner/>
-    </x-slot>
-
+<x-layout-auth>
     <div>
         <form method="POST" action="/admin/post/create">
             @csrf
@@ -32,4 +27,4 @@
             </x-form.button>
         </form>
     </div>
-</x-layout>
+</x-layout-auth>
