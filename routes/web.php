@@ -22,8 +22,13 @@ Route::get('/', [PostController::class, 'index']);
 
 Route::get('/post/{post:id}', [PostController::class, 'show']);
 
-Route::get('admin/post/create', [PostController::class, 'create'])->middleware('admin');
-Route::post('admin/post/create', [PostController::class, 'store'])->middleware('admin');
+Route::get('/admin/posts', [PostController::class, 'indexAdmin'])->middleware('admin');
+Route::get('/admin/post/{post:id}/edit', [PostController::class, 'edit'])->middleware('admin');
+Route::patch('/admin/post/{post:id}', [PostController::class, 'update'])->middleware('admin');
+Route::delete('/admin/post/{post:id}', [PostController::class, 'destroy'])->middleware('admin');
+
+Route::get('/admin/post/create', [PostController::class, 'create'])->middleware('auth');
+Route::post('/admin/post/create', [PostController::class, 'store'])->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');

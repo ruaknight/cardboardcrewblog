@@ -23,6 +23,40 @@ class PostController extends Controller
             ]);
     }
 
+    public function indexAdmin()
+    {
+        return view('admin-post', [
+            'posts' => Post::latest()->filter(\request(['search', 'category', 'author']))->get()
+        ]);
+    }
+
+    public function edit(Post $post) {
+        return view('admin-post-edit', ['post' => $post]);
+    }
+
+    public function update(Post $post) {
+        $attributes = \request()->validate([
+            'title' => ['required', 'max:255'],
+//            'title' => ['required', 'max:255', Rule::unique('posts', 'title')->ignore($post->id)],
+            'excerpt' => ['required'],
+            'body' => ['required'],
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+
+        $attributes['main_image'] = $post->main_image;
+        $attributes['user_id'] = $post->user_id;
+
+        $post->update($attributes);
+
+        return redirect('/')->with('success', 'updated successfully');
+    }
+
+    public function destroy(Post $post) {
+        $post->delete();
+
+        return back()->with('success', 'deleted successfully');
+    }
+
     public function show(Post $post, Boardgamegeek $boardgamegeek)
     {
         $post
@@ -50,6 +84,8 @@ class PostController extends Controller
 
         $attributes['main_image'] = fake()->imageUrl(1280, 720);
         $attributes['user_id'] = auth()->id();
+
+//        dd($_POST);
 
         Post::create($attributes);
 

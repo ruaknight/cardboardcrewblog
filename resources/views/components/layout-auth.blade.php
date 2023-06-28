@@ -69,9 +69,11 @@
                     </button>
                 </x-slot>
 
-                <div x-show="show" class="py-2 text-sm px-3 absolute bg-gray-100 rounded-xl mt-2 z-10"
+                <div x-show="show" class="py-2 text-sm px-3 absolute bg-gray-100 rounded-xl mt-2 z-10 flex flex-col"
                      style="display: none">
-
+                    @if(auth()->user()->role === 'admin')
+                        <a href="/admin/posts">List posts</a>
+                    @endif
                     @if(auth()->user()->role === 'author' || auth()->user()->role === 'admin')
                         <a href="/admin/post/create">Create a post</a>
                     @endif
@@ -102,7 +104,7 @@
            value="{{ request('email') }}">
 
     @error('email')
-        <span class="text-red-500">{{ $message }}</span>
+    <span class="text-red-500">{{ $message }}</span>
     @enderror
 </form>
 

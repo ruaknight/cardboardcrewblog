@@ -10,7 +10,7 @@
         <form method="POST" action="/comment" class="relative">
             @csrf
             <input type="hidden" name="post_id" value="{{ $post->id }}">
-            <textarea class="border border-blue-400 rounded-lg p-2 pl-5 w-[500px] h-24 outline-none" type="text"
+            <textarea class="border border-blue-400 rounded-lg p-2 pl-5 w-[450px] h-24 outline-none" type="text"
                       name="comment"></textarea>
             <div
                 class="absolute top-[5px] left-0 transform -translate-x-1/2 translate-y-1/2 rotate-45 w-4 h-4 bg-white border-l border-b border-blue-400">
