@@ -30,6 +30,13 @@ class PostController extends Controller
         ]);
     }
 
+    public function indexSelfPost()
+    {
+        return view('admin-post', [
+            'posts' => Post::latest()->where('user_id', auth()->id())->get()
+        ]);
+    }
+
     public function edit(Post $post) {
         return view('admin-post-edit', ['post' => $post]);
     }

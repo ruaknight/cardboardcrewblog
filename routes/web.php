@@ -44,31 +44,31 @@ Route::post('/comment', [CommentController::class, 'store'])->middleware('auth')
 //    return view('posts', ['posts' => $category->posts]);
 //});
 
-
-Route::post('newsletter', function () {
-    request()->validate(['email' => 'required|email']);
-
-    $mailchimp = new \MailchimpMarketing\ApiClient();
-
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),
-        'server' => 'us21'
-    ]);
-
-    try {
-        $response = $mailchimp->lists->addListMember("74c20aff63", [
-            'email_address' => request('email'),
-            'status' => 'subscribed',
-        ]);
-    } catch (Exception $e) {
-        \Illuminate\Validation\ValidationException::withMessages(
-            ['email', 'cant subscribe']
-        );
-    }
-
-    return redirect('/')
-        ->with('success', 'subscribed!');
-});
+//
+//Route::post('newsletter', function () {
+//    request()->validate(['email' => 'required|email']);
+//
+//    $mailchimp = new \MailchimpMarketing\ApiClient();
+//
+//    $mailchimp->setConfig([
+//        'apiKey' => config('services.mailchimp.key'),
+//        'server' => 'us21'
+//    ]);
+//
+//    try {
+//        $response = $mailchimp->lists->addListMember("74c20aff63", [
+//            'email_address' => request('email'),
+//            'status' => 'subscribed',
+//        ]);
+//    } catch (Exception $e) {
+//        \Illuminate\Validation\ValidationException::withMessages(
+//            ['email', 'cant subscribe']
+//        );
+//    }
+//
+//    return redirect('/')
+//        ->with('success', 'subscribed!');
+//});
 
 Route::get('/test/{id:id}', function(String $id, Boardgamegeek $bg) {
     return $bg->getInfo($bg->gameUrlBuilder($id));

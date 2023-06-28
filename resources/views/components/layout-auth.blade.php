@@ -87,7 +87,7 @@
     </div>
 </nav>
 
-<main class="bg-gray-100">
+<main class="bg-gray-100 h-full">
     <div class="max-w-5xl drop-shadow-sm mx-auto px-5 py-10 grid grid-cols-7 gap-2">
         <div class="col-start-1 col-end-8 bg-white rounded-xl px-5 pt-5">
             {{ $slot }}
@@ -95,18 +95,17 @@
     </div>
 </main>
 
-<form method="POST" action="/newsletter" class="py-1.5 px-3 rounded-full flex items-center align-middle">
-    @csrf
-    <input type="text"
-           name="email"
-           placeholder="you email"
-           class="bg-gray-100 outline-none pl-2"
-           value="{{ request('email') }}">
-
-    @error('email')
-    <span class="text-red-500">{{ $message }}</span>
-    @enderror
-</form>
+{{--<form method="POST" action="/newsletter" class="py-1.5 px-3 rounded-full flex items-center align-middle">--}}
+{{--    @csrf--}}
+{{--    <input type="text"--}}
+{{--           name="email"--}}
+{{--           placeholder="you email"--}}
+{{--           class="bg-gray-100 outline-none pl-2"--}}
+{{--           value="{{ request('email') }}">--}}
+{{--    @error('email')--}}
+{{--    <span class="text-red-500">{{ $message }}</span>--}}
+{{--    @enderror--}}
+{{--</form>--}}
 
 </body>
 
