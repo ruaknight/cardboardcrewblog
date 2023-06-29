@@ -24,9 +24,12 @@
 
             <x-form.textarea name="body">{{ $post->body }}</x-form.textarea>
 
+            <div class="flex gap-2">
             <x-form.button>
                 Submit
             </x-form.button>
+                <a href="/" class="mb-6 mt-6 bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500">Edit comment</a>
+            </div>
         </form>
     </div>
 </x-layout-auth>
